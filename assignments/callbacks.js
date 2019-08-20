@@ -1,6 +1,6 @@
 // Create a higher order function and invoke the callback function to test your work. You have been provided an example of a problem and a solution to see how this works with our items array.  Study both the problem and the solution to figure out the rest of the problems.
 
-const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
+const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum', 'phone', 'streetcar', 'streetcar', 'phone', 'tablet'];
 
 /* 
 
@@ -37,33 +37,75 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   const test2 = firstItem(items, logExorbitantPrice);
   console.log(test2); // "this Pencil is worth a million dollars!"
 */
+//create higher order function for arrays
+function highOrderFunction(arr, cb) {
+  return cb(arr);
+}
 
-
-function getLength(arr, cb) {
+function getLength(arr) {
   // getLength passes the length of the array into the callback.
+  return `The array is ${arr.length} items long.`;
 }
 
-function last(arr, cb) {
+// test getLength
+// console.log(highOrderFunction(items, getLength));
+
+
+
+function last(arr) {
   // last passes the last item of the array into the callback.
+  return `The last item in the array is ${arr[arr.length - 1]}.`;
 }
 
-function sumNums(x, y, cb) {
-  // sumNums adds two numbers (x, y) and passes the result to the callback.
+// test last
+// console.log(highOrderFunction(items, last))
+
+//create high order function for numbers
+function highOrderB(num1, num2, cb) {
+  return cb(num1, num2);
 }
+
+function sumNums(x, y) {
+  // sumNums adds two numbers (x, y) and passes the result to the callback.
+  return `The sum of ${x} and ${y} is ${x + y}.`;
+}
+//test sumNums
+// console.log(highOrderB(5, 6, sumNums));
+
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  return `The product of ${x} and ${y} is ${x * y}.`;
+}
+//test multiplyNums;
+// console.log(highOrderB(4, 12, multiplyNums));
+
+//create high order for items
+function highOrderC(item, list, cb) {
+  return cb(item, list);
 }
 
-function contains(item, list, cb) {
+function contains(item, list) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  for (let i=0; i<list.length; i++) {
+    if (item === list[i]) {
+      return true;
+    }
+  } return false;
 }
 
-/* STRETCH PROBLEM */
+//test contains 
+// console.log(highOrderC('notebook', items, contains))
 
-function removeDuplicates(array, cb) {
+/* STRETCH PROBLEM */
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
-}
+ const removeDuplicates = function (arr) {
+   return arr.filter(function(item, index) {
+     return arr.indexOf(item) >= index;
+   });
+ };
+
+ console.log(highOrderFunction(items, removeDuplicates))
