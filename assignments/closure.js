@@ -3,6 +3,19 @@
 // Keep it simple! Remember a closure is just a function
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
+function continent(continentName) {
+  const warm = 'warm';
+  const cold = 'cold';
+  function country(countryName) {
+    const language1 = 'English';
+    const language2 = 'Other';
+    const foods = 'pizza';
+    function city(cityName) {
+      const population = '3 million';
+      console.log(`${cityName} is located in ${countryName} within ${continentName} and has a relatively ${warm} climate. Language primarily spoken: ${language2}.`)
+    } city('Milan');
+  } country('Italy');
+} continent('Europe');
 
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
@@ -10,6 +23,10 @@
 
 // ==== Challenge 2: Implement a "counter maker" function ====
 const counterMaker = () => {
+  let count = 0;
+  function counter(count) {
+    
+  }
   // IMPLEMENTATION OF counterMaker:
   // 1- Declare a `count` variable with a value of 0. We will be mutating it, so declare it using `let`!
   // 2- Declare a function `counter`. It should increment and return `count`.
